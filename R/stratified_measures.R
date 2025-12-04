@@ -25,12 +25,32 @@ stratified_measures <- function(exposure, outcome, confounder) {
   outcome_factor <- factor(outcome, levels = c(0,1))
   confounder_factor <- factor(confounder)
   table_3d <- table(exposure = exposure_factor, outcome = outcome_factor, confounder = confounder_factor)
+  # STRATIFIED MEASURES
+  strata_levels <- dimnames(table_3d)[["confounder"]]
+  tables_by_stratum <- lapply(seq_along(strata_levels), function(k) {table_3d[, , k]})
+  names(tables_by_stratum) <- strata_levels
+  # STRATIFIED ODDS RATIO
+  OR_list <- list()
+  for (k in seq_along(strata_levels)) {
+    stratified_table <- table_3d[, , k]
+    OR_statistic_value_with_CI <- oddsratio(stratified_table)$measure
+    OR_list[[k]] <- data.frame(Stratum = strata_levels[k], Measure = "Odds Ratio (OR)", Reference = 0, Exposure = 1, Estimate = OR_statistic_value_with_CI[2, 1], Lower_95_CI = OR_statistic_value_with_CI[2, 2], Upper_95_CI = OR_statistic_value_with_CI[2, 3])
+  }
+  OR_with_all_stratums <- do.call(rbind, OR_list)
+  # STRATIFIED RELATIVE RISK
+  RR_list <- list()
+  for (k in seq_along(strata_levels)) {
+    stratified_table <- table_3d[, , k]
+    RR_statistic_value_with_CI <- riskratio(stratified_table)$measure
+    RR_list[[k]] <- data.frame(Stratum = strata_levels[k], Measure = "Relative Risk (RR)", Reference = 0, Exposure = 1, Estimate = RR_statistic_value_with_CI[2, 1], Lower_95_CI = RR_statistic_value_with_CI[2, 2], Upper_95_CI = RR_statistic_value_with_CI[2, 3])
+  }
+  RR_with_all_stratums <- do.call(rbind, RR_list)
+  # RETURNING EVERYTHING CALCULATED
+  result <- list(tables_by_stratum = tables_by_stratum, Odds_Ratio = OR_with_all_stratums, Relative_Risk = RR_with_all_stratums)
+  return(result)
 }
 
 # TESTING DATA
-
-test <- stratified_measures(c(1, 1, 0), c(1, 0, 1), c(0, 1, 2))
-test
 
 set.seed(2025)
 
