@@ -2,7 +2,7 @@ Package: stratifiedmeasures
 Type: Package
 Title: Crude and Stratified Odds/Risk Ratio (OR/RR) Estimation with 95% Confidence Interval
 Version: 0.1.0
-Authors: Bernard Shek, Dian Zhang
+Authors@R: c(person("Bernard", "Shek", email = "bernard.shek@mail.utoronto.ca", role = c("aut", "cre")), person("Dian", "Zhang", role = "aut"))
 Description: Computes the crude odds/risk ratio (OR/RR) and stratum-specific odds/risk ratios by a specified confounder using raw exposure and outcome vectors.
     This function automates the construction of two-way contingency tables with totals and provides odds/risk ratio estimates with 95% confidence intervals.
 License: MIT + file LICENSE

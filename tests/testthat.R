@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(CHL5233FinalProjectBernardShekDianZhang)
+library(stratifiedmeasures)
 
-test_check("CHL5233FinalProjectBernardShekDianZhang")
+test_check("stratifiedmeasures")

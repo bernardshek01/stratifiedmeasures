@@ -2,3 +2,4 @@
 
 export(stratified_or)
 export(stratified_rr)
+importFrom(stats,addmargins)

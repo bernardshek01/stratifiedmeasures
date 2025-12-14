@@ -1,5 +1,5 @@
-#' @title Crude and Stratified Odds Ratio (OR) Estimation with 95% Confidence Interval
-#' @description Computes the crude odds ratio (OR) and stratum-specific odds ratios by a specified confounder using raw exposure and outcome vectors. This function automates the construction of two-way contingency tables with totals and provides odds ratio estimates with 95% confidence intervals.
+#' @title Crude and Stratified Odds Ratio (OR) Estimation with 95\% Confidence Interval
+#' @description Computes the crude odds ratio (OR) and stratum-specific odds ratios by a specified confounder using raw exposure and outcome vectors. This function automates the construction of two-way contingency tables with totals and provides odds ratio estimates with 95\% confidence intervals.
 #' @param exposure A numeric or factor vector. The exposure may contain multiple levels. The lowest level is treated as the reference group.
 #' @param outcome A numeric or factor vector. The outcome can only contain two levels. The lowest level is treated as the reference group.
 #' @param confounder A vector representing a potential confounder used for stratification. Each unique non-missing value defines a stratum.
@@ -11,9 +11,9 @@
 #'  }
 #' @details Crude and stratum-specific two-way frequency tables with totals are presented.
 #' Odds ratios are estimated using the standard maximum likelihood estimator based on 2*2 contingency tables.
-#' Confidence intervals are computed using the mid-p exact method as the default computation method implemented by \code{\link[epitools:oddsratio]{oddsratio()}}
+#' Confidence intervals are computed using the mid-p exact method as the default computation method implemented by [epitools::oddsratio()]
 #' Missing values from exposure, outcome and confounder variables are excluded from the analysis. Counts of missing values are returned.
-#' If any cell in a contingency table contains less than 5 counts, a warning message is returned as implemented by \code{\link[epitools:oddsratio]{oddsratio()}}
+#' If any cell in a contingency table contains less than 5 counts, a warning message is returned as implemented by [epitools::oddsratio()]
 #' @examples
 #' ## Generate simulation data
 #' set.seed(123)
@@ -22,6 +22,7 @@
 #' confounder <- sample(1:3, 100, replace = TRUE)
 #' ## Run stratified odds ratio analysis
 #' stratified_or(exposure, outcome, confounder)
+#' @importFrom stats addmargins
 #' @export
 
 stratified_or <- function(exposure, outcome, confounder) {
