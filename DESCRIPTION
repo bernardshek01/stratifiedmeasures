@@ -1,14 +1,8 @@
-Package: CHL5233FinalProjectBernardShekDianZhang
+Package: stratifiedmeasures
 Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Authors@R: c(
-    person(
-      "Jane", "Doe",
-      email = "jane@example.com",
-      role = c("aut", "cre")
-    )
-  )
+Authors@R: c(person("Bernard", "Shek", role = c("aut", "cre")), person("Dian", "Zhang", role = c("aut", "cre")))
 Description: More about what it does (maybe more than one line).
     Continuation lines should be indented.
 License: What license is it under?
