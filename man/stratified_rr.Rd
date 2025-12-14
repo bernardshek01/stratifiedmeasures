@@ -2,14 +2,14 @@
 % Please edit documentation in R/stratified_rr.R
 \name{stratified_rr}
 \alias{stratified_rr}
-\title{Crude and Stratified Risk Ratio Estimation and 95% Confidence Interval}
+\title{Crude and Stratified Risk Ratio (RR) Estimation with 95% Confidence Interval}
 \usage{
 stratified_rr(exposure, outcome, confounder)
 }
 \arguments{
-\item{exposure}{a numeric or factor vector. The exposure may contain multiple levels. The lowest level is treated as the reference group.}
+\item{exposure}{A numeric or factor vector. The exposure may contain multiple levels. The lowest level is treated as the reference group.}
 
-\item{outcome}{a numeric or factor vector. The outcome can only be binary. The lowest level is treated as the reference group.}
+\item{outcome}{A numeric or factor vector. The outcome can only contain two levels. The lowest level is treated as the reference group.}
 
 \item{confounder}{A vector representing a potential confounder used for stratification. Each unique non-missing value defines a stratum.}
 }
@@ -21,25 +21,21 @@ A list containing two components:
  }
 }
 \description{
-Computes the crude risk ratio (RR) and stratum-specific risk ratios by a specified confounder using raw exposure and outcome vectors. This function
-automates the construction of two-way contingency tables with totals and provides odds ratio estimates and 95% confidence intervals in a single step.
+Computes the crude risk ratio (RR) and stratum-specific risk ratios by a specified confounder using raw exposure and outcome vectors. This function automates the construction of two-way contingency tables with totals and provides odds ratio estimates and 95% confidence intervals.
 }
 \details{
-Crude and stratum-specific two-way frequency tables with totals are presented
-Risk ratios are estimated by the unconditional maximum likelihood estimation(Wald) based on 2*2 contingency tables.
-Confidence intervals are computed by the unconditional maximum likelihood estimation(Wald) as the default computation method implemented by \code{\link[epitools:oddsratio]{oddsratio()}}
-
+Crude and stratum-specific two-way frequency tables with totals are presented.
+Risk ratios are estimated by the unconditional maximum likelihood estimation (Wald) based on 2*2 contingency tables.
+Confidence intervals are computed by the unconditional maximum likelihood estimation (Wald) as the default computation method implemented by \code{\link[epitools:oddsratio]{oddsratio()}}
 Missing values from exposure, outcome and confounder variables are excluded from the analysis. Counts of missing values are returned.
 If any cell in a contingency table contains less than 5 counts, a warning message is returned as implemented by \code{\link[epitools:oddsratio]{oddsratio()}}
 }
 \examples{
-## Generate example data
+## Generate simulation data
 set.seed(123)
 exposure <- rbinom(100, 1, 0.4)
 outcome <- rbinom(100, 1, 0.3)
 confounder <- sample(1:3, 100, replace = TRUE)
-
-## Run stratified odds ratio analysis
+## Run stratified risk ratio analysis
 stratified_rr(exposure, outcome, confounder)
-
 }

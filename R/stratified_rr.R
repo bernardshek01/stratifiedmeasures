@@ -6,8 +6,8 @@
 #' @return
 #' A list containing two components:
 #'  \describe{
-#'  \item{Crude}{A list containing the crude contingency table and the crude odds ratio with its 95% confidence interval.}
-#'  \item{Stratified}{A named list of stratum-specific results. For each stratum, the output includes a contingency table and the corresponding odds ratio with its 95% confidence interval.}
+#'  \item{Crude}{A list containing the crude contingency table and the crude odds ratio with its 95\% confidence interval.}
+#'  \item{Stratified}{A named list of stratum-specific results. For each stratum, the output includes a contingency table and the corresponding odds ratio with its 95\% confidence interval.}
 #'  }
 #' @details Crude and stratum-specific two-way frequency tables with totals are presented.
 #' Risk ratios are estimated by the unconditional maximum likelihood estimation (Wald) based on 2*2 contingency tables.
