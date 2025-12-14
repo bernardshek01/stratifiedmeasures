@@ -1,11 +1,11 @@
 Package: stratifiedmeasures
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Crude and Stratified Odds/Risk Ratio (OR/RR) Estimation with 95% Confidence Interval
 Version: 0.1.0
-Authors@R: Bernard Shek, Dian Zhang
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
-License: What license is it under?
+Authors: Bernard Shek, Dian Zhang
+Description: Computes the crude odds/risk ratio (OR/RR) and stratum-specific odds/risk ratios by a specified confounder using raw exposure and outcome vectors.
+    This function automates the construction of two-way contingency tables with totals and provides odds/risk ratio estimates with 95% confidence intervals.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/bernardshek01/CHL5233FinalProjectBernardShekDianZhang
