@@ -12,6 +12,6 @@ test_that("stratifiedmeasures_structure", {
   expect_named(simulation_data, c("Crude", "Stratified"))
   expect_named(simulation_data$Crude, c("table", "Odds_Ratio"))
   expect_true(is.matrix(simulation_data$Crude$table))
-  expect_true(is.numeric(simulation_data$Crude$Odds_Ratio))
+  expect_true(is.matrix(simulation_data$Crude$Odds_Ratio))
   expect_type(simulation_data$Stratified, "list")
 })

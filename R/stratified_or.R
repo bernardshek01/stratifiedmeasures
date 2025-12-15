@@ -57,7 +57,7 @@ stratified_or <- function(exposure, outcome, confounder) {
   crude_dataframe <- data.frame(exposure = exposure, outcome = outcome, confounder = confounder)
   crude_or <- epitools::oddsratio(crude_dataframe$exposure, crude_dataframe$outcome)
   crude_2x2_table <- crude_or[["data"]]
-  crude_or_values <- crude_or[["measure"]]
+  crude_or_values <- crude_or[["measure"]][-1, , drop = FALSE]
 
   # STRATIFIED 2x2 TABLE AND ODDS RATIO (OR)
   dataframe_list <- split(crude_dataframe, crude_dataframe$confounder)
@@ -65,12 +65,12 @@ stratified_or <- function(exposure, outcome, confounder) {
   for(i in seq_along(dataframe_list)){
     stratified_dataframe <- dataframe_list[[i]]
     stratified_or <- epitools::oddsratio(stratified_dataframe$exposure, stratified_dataframe$outcome)
-    stratified_results[[i]] <- list(table = stratified_or[["data"]], Odds_Ratio = stratified_or[["measure"]][-1, ])
+    stratified_results[[i]] <- list(table = stratified_or[["data"]], Odds_Ratio = stratified_or[["measure"]][-1, , drop = FALSE])
   }
   names(stratified_results) <- names(dataframe_list)
 
   # RETURN FINAL RESULTS
-  result <- list(Crude = list(table = crude_2x2_table, Odds_Ratio = crude_or_values[-1, ]), Stratified = stratified_results)
+  result <- list(Crude = list(table = crude_2x2_table, Odds_Ratio = crude_or_values), Stratified = stratified_results)
   return(result)
 
 }
