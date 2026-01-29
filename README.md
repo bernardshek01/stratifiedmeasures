@@ -4,7 +4,6 @@
 # stratifiedmeasures
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 This is an R package that computes the crude odds/risk ratio (OR/RR) and
@@ -36,3 +35,14 @@ confounder <- sample(1:3, 100, replace = TRUE)
 stratified_or(exposure, outcome, confounder)
 stratified_rr(exposure, outcome, confounder)
 ```
+
+## Contributions and roles
+
+This package was developed collaboratively by Bernard Shek and Dian
+Zhang, who were MPH students at the Dalla Lana School of Public Health,
+University of Toronto at the time of development.
+
+- **Bernard Shek**: Project co-design; initial function drafts; code
+  refactoring and integration; repository maintenance.
+- **Dian Zhang**: Project co-design; core algorithm development;
+  function restructuring; roxygen2 documentation.
